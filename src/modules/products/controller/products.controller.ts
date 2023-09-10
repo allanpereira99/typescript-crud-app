@@ -12,7 +12,13 @@ export default class ProductController {
     res.json(products);
   }
   async getProductById(req: Request, res: Response) {
-    const product = await this.productService.getProductById(Number(req.params.id));
+    const product = await this.productService.getProductById(
+      Number(req.params.id)
+    );
+    res.json(product);
+  }
+  async patchProduct(req: Request, res: Response) {
+    const product = await this.productService.updateProduct(req.body);
     res.json(product);
   }
 }

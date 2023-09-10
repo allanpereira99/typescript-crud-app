@@ -1,4 +1,5 @@
 import { CreateProductDto } from "../dtos/create-products.dto";
+import { UpdateProduct } from "../dtos/update-products.dto";
 import { ProductRepository } from "../repositories/products.repository";
 
 export class ProductService {
@@ -12,5 +13,8 @@ export class ProductService {
   }
   async getProductById(id: number) {
     return await this.productRepository.findById(id);
+  }
+  async updateProduct(product: UpdateProduct) {
+    return await this.productRepository.update(product);
   }
 }

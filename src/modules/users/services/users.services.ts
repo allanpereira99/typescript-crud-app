@@ -1,4 +1,5 @@
 import { CreateUserDto } from "../dtos/create-user.dto";
+import { UpdateUser } from "../dtos/update-users.dto";
 import { UserRepository } from "../repositories/users.repository";
 
 export class UserService {
@@ -12,5 +13,8 @@ export class UserService {
   }
   async getUserById(id: number) {
     return await this.userRepository.findById(id);
+  }
+  async updateUser(user: UpdateUser) {
+    return await this.userRepository.update(user);
   }
 }

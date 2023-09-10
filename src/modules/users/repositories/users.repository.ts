@@ -1,5 +1,6 @@
 import { CreateUserDto, User } from "../dtos/create-user.dto";
 import { PrismaClient } from "@prisma/client";
+import { UpdateUser } from "../dtos/update-users.dto";
 
 const prisma = new PrismaClient();
 export class UserRepository {
@@ -13,5 +14,17 @@ export class UserRepository {
   }
   async findById(id: number): Promise<User | null> {
     return (await prisma.user.findUnique({ where: { id: id } })) || null;
+  }
+  async update(user: UpdateUser): Promise<string> {
+    const newUpdate = await prisma.user.updateMany({
+      where: { id: user.id },
+      data: {
+        firstName:user.firstName,
+        lastName:user.lastName,
+        email:user.email,
+        password:user.password
+      },
+    });
+    return "sucess";
   }
 }

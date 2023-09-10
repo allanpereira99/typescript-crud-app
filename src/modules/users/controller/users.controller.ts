@@ -15,4 +15,8 @@ export default class UserController {
     const user = await this.userService.getUserById(Number(req.params.id));
     res.json(user);
   }
+  async patchUser(req: Request, res: Response) {
+    const user = await this.userService.updateUser(req.body);
+    res.json(user);
+  }
 }

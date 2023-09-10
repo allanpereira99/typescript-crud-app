@@ -10,7 +10,8 @@ const productsRouter = Router();
 productsRouter
   .route("/products")
   .post((req, res) => productController.createProduct(req, res))
-  .get((req, res) => productController.getProducts(req, res));
+  .get((req, res) => productController.getProducts(req, res))
+  .patch((req,res)=>productController.patchProduct(req,res));
 productsRouter
   .route("/products/:id")
   .get((req, res) => productController.getProductById(req, res));

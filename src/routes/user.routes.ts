@@ -9,7 +9,8 @@ const userRouter = Router();
 userRouter
   .route("/users")
   .post((req, res) => userController.createUser(req, res))
-  .get((req, res) => userController.getUsers(req, res));
+  .get((req, res) => userController.getUsers(req, res))
+  .patch((req,res)=>userController.patchUser(req,res));
 userRouter
   .route("/users/:id")
   .get((req, res) => userController.getUserById(req, res));
